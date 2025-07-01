@@ -31,6 +31,7 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
       bg={active ? 'grassTeal' : undefined}
       color={active ? '#202023' : inactiveColor}
       target={target}
+      aria-current={active ? 'page' : undefined}
       {...props}
     >
       {children}
@@ -53,6 +54,8 @@ const Navbar = props => {
       bg={useColorModeValue('#ffffff40', '#20202380')}
       css={{ backdropFilter: 'blur(10px)' }}
       zIndex={2}
+      role="navigation"
+      aria-label="Main navigation"
       {...props}
     >
       <Container
@@ -80,16 +83,12 @@ const Navbar = props => {
           <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
-          <LinkItem href="https://store.craftz.dog/" path={path}>
-            Wallpapers
+          <LinkItem href="https://blog.hacklab.dog/" target="_blank">
+            Blog
           </LinkItem>
-          <LinkItem href="/posts" path={path}>
-            Posts
-          </LinkItem>
-          <LinkItem href="https://uses.craftz.dog/">Uses</LinkItem>
           <LinkItem
             target="_blank"
-            href="https://github.com/craftzdog/craftzdog-homepage"
+            href="https://github.com/REPO_PENDIENTE"
             path={path}
             display="inline-flex"
             alignItems="center"
@@ -110,7 +109,8 @@ const Navbar = props => {
                 as={IconButton}
                 icon={<HamburgerIcon />}
                 variant="outline"
-                aria-label="Options"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
               />
               <MenuList>
                 <MenuItem as={MenuLink} href="/">
@@ -119,18 +119,13 @@ const Navbar = props => {
                 <MenuItem as={MenuLink} href="/works">
                   Works
                 </MenuItem>
-                <MenuItem as={MenuLink} href="https://store.craftz.dog/">
-                  Wallpapers
-                </MenuItem>
-                <MenuItem as={MenuLink} href="/posts">
-                  Posts
-                </MenuItem>
-                <MenuItem as={MenuLink} href="https://uses.craftz.dog/">
-                  Uses
+                <MenuItem as={Link} href="https://blog.hacklab.dog/" target="_blank">
+                  Blog
                 </MenuItem>
                 <MenuItem
                   as={Link}
-                  href="https://github.com/craftzdog/craftzdog-homepage"
+                  href="https://github.com/REPO_PENDIENTE"
+                  target="_blank"
                 >
                   View Source
                 </MenuItem>

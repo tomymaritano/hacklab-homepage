@@ -1,22 +1,27 @@
 {
-  "name": "craftzdog-homepage",
+  "name": "hacklab-homepage",
   "version": "1.0.0",
-  "description": "Takuya's website",
+  "description": "Tomy's website",
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "prettier": "prettier --write .",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sanity": "sanity dev",
+    "sanity:deploy": "sanity deploy",
+    "sanity:build": "sanity build"
   },
   "keywords": [],
-  "author": "Takuya Matsuyama",
+  "author": "Tomás Maritano",
   "license": "MIT",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@sanity/client": "^6.29.1",
+    "@sanity/image-url": "^1.1.0",
     "@vercel/analytics": "^1.1.1",
     "framer-motion": "^10.16.4",
     "next": "^13.5.6",

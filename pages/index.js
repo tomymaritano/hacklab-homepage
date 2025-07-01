@@ -16,8 +16,8 @@ import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
-import thumbYouTube from '../public/images/links/youtube.png'
+import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
+import thumbBlog from '../public/images/links/blog.png'
 import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
 import Image from 'next/image'
 
@@ -32,15 +32,15 @@ const Home = () => (
         bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
         css={{ backdropFilter: 'blur(10px)' }}
       >
-        Hello, I&apos;m an indie app developer based in Japan!
+        Hello, I&apos;m an indie developer based in Rosario!
       </Box>
 
       <Box display={{ md: 'flex' }}>
         <Box flexGrow={1}>
           <Heading as="h2" variant="page-title">
-            Takuya Matsuyama
+            Tomás Maritano
           </Heading>
-          <p>Digital Craftsman ( Artist / Developer / Designer )</p>
+          <p>Indie Developer & Digital Creator</p>
         </Box>
         <Box
           flexShrink={0}
@@ -59,10 +59,11 @@ const Home = () => (
             overflow="hidden"
           >
             <Image
-              src="/images/takuya.jpg"
-              alt="Profile image"
+              src="/images/me.jpeg"
+              alt="Tomás Maritano - Indie Developer and Product Manager profile photo"
               width="100"
               height="100"
+              priority
             />
           </Box>
         </Box>
@@ -73,26 +74,10 @@ const Home = () => (
           Work
         </Heading>
         <Paragraph>
-          Takuya is a freelance and a full-stack developer based in Osaka with a
-          passion for building digital services/stuff he wants. He has a knack
-          for all things launching products, from planning and designing all the
-          way to solving real-life problems with code. When not online, he loves
-          hanging out with his camera. Currently, he is living off of his own
-          product called{' '}
-          <Link as={NextLink} href="/works/inkdrop" passHref scroll={false}>
-            Inkdrop
-          </Link>
-          . He publishes content for marketing his products and his YouTube
-          channel called &quot;
-          <Link
-            as={NextLink}
-            href="https://www.youtube.com/devaslife"
-            passHref
-            target="_blank"
-          >
-            Dev as Life
-          </Link>
-          &quot; has more than 100k subscribers.
+          Tomás is an indie developer with 7+ years scaling from Frontend Developer to 
+          Product Manager at companies like Wolt, Unicoin, and Valere. He specializes in 
+          end-to-end product development and team leadership. Now focused on indie development, 
+          combining product expertise with technical skills to build innovative solutions.
         </Paragraph>
         <Box align="center" my={4}>
           <Button
@@ -112,22 +97,20 @@ const Home = () => (
           Bio
         </Heading>
         <BioSection>
-          <BioYear>1984</BioYear>
-          Born in Osaka (大阪), Japan.
+          <BioYear>2017</BioYear>
+          Started as Frontend Developer, building user-friendly web experiences with modern technologies.
         </BioSection>
         <BioSection>
-          <BioYear>2010</BioYear>
-          Completed the Master&apos;s Program in the Graduate School of
-          Information Science at Nara Institute of Science and Technology
-          (奈良先端科学技術大学院大学情報科学研究科修士課程)
+          <BioYear>2021</BioYear>
+          Scaled to Team Lead at Wolt (Denmark), managing multidisciplinary teams and strategic planning.
         </BioSection>
         <BioSection>
-          <BioYear>2010</BioYear>
-          Worked at Yahoo! Japan (ヤフー株式会社入社)
+          <BioYear>2022</BioYear>
+          Evolved into Product Management, leading full-stack development and product lifecycle across multiple companies.
         </BioSection>
         <BioSection>
-          <BioYear>2012 to present</BioYear>
-          Working as a freelancer
+          <BioYear>2025 to present</BioYear>
+          Focus on indie development, combining technical expertise with product strategy to build innovative digital solutions.
         </BioSection>
       </Section>
 
@@ -136,15 +119,8 @@ const Home = () => (
           I ♥
         </Heading>
         <Paragraph>
-          Art, Music,{' '}
-          <Link href="https://illust.odoruinu.net/" target="_blank">
-            Drawing
-          </Link>
-          , Playing Drums,{' '}
-          <Link href="https://500px.com/p/craftzdog" target="_blank">
-            Photography
-          </Link>
-          , Leica, Machine Learning
+          Technology, Open Source, Music Production, Creative Coding, Game Development, 
+          Digital Art, Innovation, Problem Solving, Minimalist Design
         </Paragraph>
       </Section>
 
@@ -154,46 +130,46 @@ const Home = () => (
         </Heading>
         <List>
           <ListItem>
-            <Link href="https://github.com/craftzdog" target="_blank">
+            <Link href="https://github.com/tomymaritano" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoGithub />}
               >
-                @craftzdog
+                @tomymaritano
               </Button>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://twitter.com/inkdrop_app" target="_blank">
+            <Link href="https://twitter.com/hacklabdog" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoTwitter />}
               >
-                @inkdrop_app (English)
+                @hacklabdog
               </Button>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://twitter.com/craftzdog" target="_blank">
+            <Link href="https://linkedin.com/in/tomymaritano" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
-                leftIcon={<IoLogoTwitter />}
+                leftIcon={<IoLogoLinkedin/>}
               >
-                @craftzdog (日本語)
+                @tomymaritano
               </Button>
             </Link>
           </ListItem>
           <ListItem>
-            <Link href="https://instagram.com/craftzdog" target="_blank">
+            <Link href="https://instagram.com/hacklabdog" target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
                 leftIcon={<IoLogoInstagram />}
               >
-                @craftzdog
+                @hacklabdog
               </Button>
             </Link>
           </ListItem>
@@ -201,18 +177,18 @@ const Home = () => (
 
         <SimpleGrid columns={[1, 2, 2]} gap={6}>
           <GridItem
-            href="https://www.youtube.com/devaslife"
-            title="Dev as Life"
-            thumbnail={thumbYouTube}
+            href="https://blog.hacklab.dog"
+            title="Hacklab Blog"
+            thumbnail={thumbBlog}
           >
-            My YouTube channel (&gt;200k subs)
+            Product development insights and tutorials
           </GridItem>
           <GridItem
-            href="https://www.inkdrop.app/"
-            title="Inkdrop"
+            href="/works"
+            title="Portfolio"
             thumbnail={thumbInkdrop}
           >
-            A Markdown note-taking app
+            Featured projects and case studies
           </GridItem>
         </SimpleGrid>
 
@@ -227,7 +203,7 @@ const Home = () => (
         <Box align="center" my={4}>
           <Button
             as={NextLink}
-            href="https://www.devas.life/"
+            href="https://blog.hacklab.dog/"
             scroll={false}
             leftIcon={<EmailIcon />}
             colorScheme="teal"
