@@ -18,7 +18,7 @@ import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 import thumbBlog from '../public/images/links/blog.png'
-import thumbInkdrop from '../public/images/works/inkdrop_eyecatch.png'
+import thumbInkdrop from '../public/images/works-migration/salaryboard.webp'
 import Image from 'next/image'
 
 const Home = () => (

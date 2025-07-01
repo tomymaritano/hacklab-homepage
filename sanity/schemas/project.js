@@ -84,22 +84,47 @@ export default {
     },
     {
       name: 'image',
-      title: 'Main Image',
+      title: 'Main Image (Thumbnail)',
+      description: 'Main project image shown in the portfolio grid',
       type: 'image',
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Important for SEO and accessibility'
+        }
+      ]
     },
     {
       name: 'gallery',
-      title: 'Gallery',
+      title: 'Project Screenshots',
+      description: 'Additional images shown on the project detail page',
       type: 'array',
       of: [
         {
           type: 'image',
           options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string'
+            },
+            {
+              name: 'caption',
+              title: 'Caption',
+              type: 'string'
+            }
+          ]
         },
       ],
+      options: {
+        layout: 'grid'
+      }
     },
     {
       name: 'type',

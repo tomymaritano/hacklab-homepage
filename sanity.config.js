@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Hacklab Portfolio',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId: 'ebl2wr39',
+  dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
 
