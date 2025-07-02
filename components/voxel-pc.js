@@ -13,7 +13,10 @@ const VoxelPc = () => {
   const [loading, setLoading] = useState(true)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const refRenderer = useRef()
-  const urlPcGLB = '/pc-compressed.glb'
+  // GitHub Releases CDN (free and fast)
+  const urlPcGLB = process.env.NODE_ENV === 'production' 
+    ? 'https://github.com/tomymaritano/hacklab-homepage/releases/download/v1.0.0/pc-compressed.glb'
+    : '/pc-compressed.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
