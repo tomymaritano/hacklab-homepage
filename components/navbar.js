@@ -113,9 +113,6 @@ const Navbar = props => {
                 aria-expanded="false"
               />
               <MenuList>
-                <MenuItem as={MenuLink} href="/">
-                  About
-                </MenuItem>
                 <MenuItem as={MenuLink} href="/works">
                   Works
                 </MenuItem>
