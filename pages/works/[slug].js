@@ -11,6 +11,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Title, WorkImage, Meta } from '../../components/work'
 import P from '../../components/paragraph'
 import Layout from '../../components/layouts/article'
+import ErrorBoundary from '../../components/error-boundary'
 import client, { queries, urlFor } from '../../lib/sanity'
 
 const Work = ({ project }) => {
@@ -44,8 +45,9 @@ const Work = ({ project }) => {
   const projectGallery = gallery || []
 
   return (
-    <Layout title={title}>
-      <Container>
+    <ErrorBoundary>
+      <Layout title={title}>
+        <Container>
         <Title>
           {title} <Badge>{year}</Badge>
         </Title>
@@ -58,7 +60,7 @@ const Work = ({ project }) => {
           </ListItem>
           <ListItem>
             <Meta>Stack</Meta>
-            <span>{stack.join(', ')}</span>
+            <span>{Array.isArray(stack) ? stack.join(', ') : stack || 'N/A'}</span>
           </ListItem>
           {users && (
             <ListItem>
@@ -84,7 +86,7 @@ const Work = ({ project }) => {
           </ListItem>
         </List>
 
-        {features.length > 0 && (
+        {Array.isArray(features) && features.length > 0 && (
           <>
             <P><strong>Key Features:</strong></P>
             <UnorderedList ml={4} my={4}>
@@ -106,48 +108,49 @@ const Work = ({ project }) => {
           </List>
         )}
 
-        {/* Gallery images from Sanity or fallback */}
-        <SimpleGrid columns={[1, 2, 2]} gap={4} my={6}>
-          {/* Main image */}
-          {image?.asset?._id && (
-            <WorkImage 
-              src={urlFor(image).width(800).url()} 
-              alt={image.alt || `${title} - Main image`} 
-            />
-          )}
-          
-          {/* Gallery images */}
-          {projectGallery.length > 0 ? (
-            projectGallery.map((galleryImage, index) => {
+        {/* Gallery images from Sanity */}
+        {(image?.asset?._id || projectGallery.length > 0) && (
+          <SimpleGrid columns={[1, 2, 2]} gap={4} my={6}>
+            {/* Main image */}
+            {image?.asset?._id && (() => {
+              try {
+                const imageUrl = urlFor(image)?.width(800)?.url()
+                if (imageUrl) {
+                  return (
+                    <WorkImage 
+                      src={imageUrl} 
+                      alt={image.alt || `${title} - Main image`} 
+                    />
+                  )
+                }
+              } catch (error) {
+                console.warn('Error loading main image:', error)
+              }
+              return null
+            })()}
+            
+            {/* Gallery images */}
+            {projectGallery.map((galleryImage, index) => {
               if (!galleryImage?.asset?._id) return null
-              return (
-                <WorkImage 
-                  key={index}
-                  src={urlFor(galleryImage).width(800).url()} 
-                  alt={galleryImage.alt || `${title} - Screenshot ${index + 1}`} 
-                />
-              )
-            })
-          ) : (
-            /* Fallback to static images if no gallery */
-            <>
-              <WorkImage 
-                src={`/images/works-migration/${project.slug.current}/web/1.webp`} 
-                alt={`${title} - Screenshot 1`} 
-              />
-              <WorkImage 
-                src={`/images/works-migration/${project.slug.current}/web/2.webp`} 
-                alt={`${title} - Screenshot 2`} 
-              />
-              <WorkImage 
-                src={`/images/works-migration/${project.slug.current}/web/3.webp`} 
-                alt={`${title} - Screenshot 3`} 
-              />
-            </>
-          )}
-        </SimpleGrid>
-      </Container>
-    </Layout>
+              try {
+                const imageUrl = urlFor(galleryImage).width(800).url()
+                return (
+                  <WorkImage 
+                    key={index}
+                    src={imageUrl} 
+                    alt={galleryImage.alt || `${title} - Screenshot ${index + 1}`} 
+                  />
+                )
+              } catch (error) {
+                console.warn(`Error loading gallery image ${index}:`, error)
+                return null
+              }
+            })}
+          </SimpleGrid>
+        )}
+        </Container>
+      </Layout>
+    </ErrorBoundary>
   )
 }
 

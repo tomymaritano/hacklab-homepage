@@ -12,7 +12,7 @@ const VoxelPc = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
   const refRenderer = useRef()
-  const urlPcGLB = '/pc.glb'
+  const urlPcGLB = '/pc-compressed.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -38,7 +38,7 @@ const VoxelPc = () => {
       })
       renderer.setPixelRatio(window.devicePixelRatio)
       renderer.setSize(scW, scH)
-      renderer.outputEncoding = THREE.sRGBEncoding
+      renderer.outputColorSpace = THREE.SRGBColorSpace
       container.appendChild(renderer.domElement)
       refRenderer.current = renderer
       const scene = new THREE.Scene()
@@ -70,14 +70,23 @@ const VoxelPc = () => {
       controls.autoRotate = true
       controls.target = target
 
+      // Add timeout for large GLB files in production
+      const loadingTimeout = setTimeout(() => {
+        console.warn('GLB loading timeout - large file detected')
+        setLoading(false)
+      }, 30000) // 30 seconds timeout
+
       loadGLTFModel(scene, urlPcGLB, {
         receiveShadow: false,
         castShadow: false
       }).then(() => {
+        clearTimeout(loadingTimeout)
         animate()
         setLoading(false)
       }).catch((error) => {
+        clearTimeout(loadingTimeout)
         console.error('Error loading pc.glb:', error)
+        console.error('Full error details:', JSON.stringify(error))
         setLoading(false)
       })
 
