@@ -11,6 +11,7 @@ function easeOutCirc(x) {
 const VoxelPc = () => {
   const refContainer = useRef()
   const [loading, setLoading] = useState(true)
+  const [loadingProgress, setLoadingProgress] = useState(0)
   const refRenderer = useRef()
   const urlPcGLB = '/pc-compressed.glb'
 
@@ -74,11 +75,13 @@ const VoxelPc = () => {
       const loadingTimeout = setTimeout(() => {
         console.warn('GLB loading timeout - large file detected')
         setLoading(false)
-      }, 30000) // 30 seconds timeout
+      }, 60000) // 60 seconds timeout
 
       loadGLTFModel(scene, urlPcGLB, {
         receiveShadow: false,
         castShadow: false
+      }, (progress) => {
+        setLoadingProgress(progress)
       }).then(() => {
         clearTimeout(loadingTimeout)
         animate()
@@ -130,7 +133,9 @@ const VoxelPc = () => {
   }, [handleWindowResize])
 
   return (
-    <PcContainer ref={refContainer}>{loading && <PcSpinner />}</PcContainer>
+    <PcContainer ref={refContainer}>
+      {loading && <PcSpinner progress={loadingProgress} />}
+    </PcContainer>
   )
 }
 
