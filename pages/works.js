@@ -47,11 +47,11 @@ const Works = ({ projects = [] }) => {
             Works
           </Heading>
 
-          <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <SimpleGrid columns={[1, 2, 2]} gap={6}>
             {mainProjects.map((project, index) => {
               // Use Sanity image if available, otherwise fallback to static
               const thumbnail = project.image?.asset?.url 
-                ? urlFor(project.image).width(400).height(225).url()
+                ? urlFor(project.image).width(400).height(225).auto('format').quality(85).url()
                 : thumbnails[project.slug.current] || thumbUnicoin
               
               return (
@@ -77,10 +77,10 @@ const Works = ({ projects = [] }) => {
                 </Heading>
               </Section>
 
-              <SimpleGrid columns={[1, 1, 2]} gap={6}>
+              <SimpleGrid columns={[1, 2, 2]} gap={6}>
                 {collaborations.map((project, index) => {
                   const thumbnail = project.image?.asset?.url 
-                    ? urlFor(project.image).width(400).height(225).url()
+                    ? urlFor(project.image).width(400).height(225).auto('format').quality(85).url()
                     : thumbnails[project.slug.current] || thumbNazdik
                   
                   return (
@@ -108,10 +108,10 @@ const Works = ({ projects = [] }) => {
                 </Heading>
               </Section>
 
-              <SimpleGrid columns={[1, 1, 2]} gap={6}>
+              <SimpleGrid columns={[1, 2, 2]} gap={6}>
                 {sideProjects.map((project, index) => {
                   const thumbnail = project.image?.asset?.url 
-                    ? urlFor(project.image).width(400).height(225).url()
+                    ? urlFor(project.image).width(400).height(225).auto('format').quality(85).url()
                     : thumbnails[project.slug.current] || thumbDripnex
                   
                   return (

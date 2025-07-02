@@ -37,8 +37,11 @@ const Work = ({ project }) => {
     website,
     description,
     image,
-    gallery = []
+    gallery
   } = project
+
+  // Ensure gallery is always an array
+  const projectGallery = gallery || []
 
   return (
     <Layout title={title}>
@@ -104,9 +107,9 @@ const Work = ({ project }) => {
         )}
 
         {/* Gallery images from Sanity or fallback */}
-        <SimpleGrid columns={1} gap={4} my={6}>
+        <SimpleGrid columns={[1, 2, 2]} gap={4} my={6}>
           {/* Main image */}
-          {image?.asset?.url && (
+          {image?.asset?._id && (
             <WorkImage 
               src={urlFor(image).width(800).url()} 
               alt={image.alt || `${title} - Main image`} 
@@ -114,14 +117,17 @@ const Work = ({ project }) => {
           )}
           
           {/* Gallery images */}
-          {gallery.length > 0 ? (
-            gallery.map((galleryImage, index) => (
-              <WorkImage 
-                key={index}
-                src={urlFor(galleryImage).width(800).url()} 
-                alt={galleryImage.alt || `${title} - Screenshot ${index + 1}`} 
-              />
-            ))
+          {projectGallery.length > 0 ? (
+            projectGallery.map((galleryImage, index) => {
+              if (!galleryImage?.asset?._id) return null
+              return (
+                <WorkImage 
+                  key={index}
+                  src={urlFor(galleryImage).width(800).url()} 
+                  alt={galleryImage.alt || `${title} - Screenshot ${index + 1}`} 
+                />
+              )
+            })
           ) : (
             /* Fallback to static images if no gallery */
             <>
