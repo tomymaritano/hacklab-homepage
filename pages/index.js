@@ -18,7 +18,7 @@ import Section from '../components/section'
 import { GridItem } from '../components/grid-item'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 import thumbBlog from '../public/images/links/blog.png'
-import thumbInkdrop from '../public/images/works-migration/salaryboard.webp'
+import thumbSalary from '../public/images/works-migration/salaryboard.png'
 import Image from 'next/image'
 
 const Home = () => (
@@ -74,9 +74,9 @@ const Home = () => (
           Work
         </Heading>
         <Paragraph>
-          Tomás is an indie developer with 7+ years scaling from Frontend Developer to 
-          Product Manager at companies like Wolt, Unicoin, and Valere. He specializes in 
-          end-to-end product development and team leadership. Now focused on indie development, 
+          Tomás is an indie developer with 7+ years scaling from Frontend Developer to
+          Product Manager at companies like Wolt, Unicoin, and Valere. He specializes in
+          end-to-end product development and team leadership. Now focused on indie development,
           combining product expertise with technical skills to build innovative solutions.
         </Paragraph>
         <Box align="center" my={4}>
@@ -119,7 +119,7 @@ const Home = () => (
           I ♥
         </Heading>
         <Paragraph>
-          Technology, Open Source, Music Production, Creative Coding, Game Development, 
+          Technology, Open Source, Music Production, Creative Coding, Game Development,
           Digital Art, Innovation, Problem Solving, Minimalist Design
         </Paragraph>
       </Section>
@@ -156,7 +156,7 @@ const Home = () => (
               <Button
                 variant="ghost"
                 colorScheme="teal"
-                leftIcon={<IoLogoLinkedin/>}
+                leftIcon={<IoLogoLinkedin />}
               >
                 @tomymaritano
               </Button>
@@ -184,11 +184,12 @@ const Home = () => (
             Product development insights and tutorials
           </GridItem>
           <GridItem
-            href="/works"
-            title="Portfolio"
-            thumbnail={thumbInkdrop}
+            href="https://salaries.hacklab.dog"
+            title="Salaryboard"
+            thumbnail={thumbSalary}
           >
-            Featured projects and case studies
+
+            Platform built for developers and HR
           </GridItem>
         </SimpleGrid>
 
