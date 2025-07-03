@@ -119,8 +119,7 @@ const Home = () => (
           I ♥
         </Heading>
         <Paragraph>
-          Technology, Open Source, Music Production, Creative Coding, Game Development,
-          Digital Art, Innovation, Problem Solving, Minimalist Design
+          I enjoy solving puzzles, AI (Claude Code), droning, photography, minimalist design, reading hacker books, keyboards, and collecting action figures.
         </Paragraph>
       </Section>
 

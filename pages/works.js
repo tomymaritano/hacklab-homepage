@@ -242,11 +242,6 @@ const Works = ({ projects = [] }) => {
           </WorkGridItem>
         </Section>
         <Section delay={0.6}>
-          <WorkGridItem id="legoecommerce" thumbnail={thumbLego} title="Lego Ecommerce">
-            E-commerce solution for browsing and purchasing LEGO products
-          </WorkGridItem>
-        </Section>
-        <Section delay={0.6}>
           <WorkGridItem id="salaryboard" thumbnail={thumbSalaryBoard} title="Salary Board">
             Comprehensive platform for exploring, comparing, and analyzing 
             international salary data
